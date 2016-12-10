@@ -1,0 +1,3 @@
+Flask==0.11.1
+twython==3.4.0
+requests==2.12.3
