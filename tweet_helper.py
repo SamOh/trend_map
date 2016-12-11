@@ -16,13 +16,16 @@ def get_user_info(hashtag, start_date, end_date, number_of_tweets=150):
     return list_of_tweets
 
 
-test1 = get_user_info('#feelthebern', '2016-08-01', '2016-08-20', 1)
-# for tweet in test1:
-#     print(tweet.text)
-#     print(tweet.geo)
-html = BeautifulSoup(str(test1[0].tweetPQ), "lxml")
-rawhtml = BeautifulSoup(str(test1[0].rawhtml), "lxml")
-tweets = BeautifulSoup(str(test1[0].tweets), "lxml")
-alljson = BeautifulSoup(str(test1[0].alljson), "lxml")
-location = test1[0].geo
-print(location)
+test1 = get_user_info('#feelthebern', '2016-08-01', '2016-08-20', 10)
+for tweet in test1:
+    print(tweet.text)
+    print(tweet.geo)
+
+
+# Relic of past tests
+# html = BeautifulSoup(str(test1[0].tweetPQ), "lxml")
+# rawhtml = BeautifulSoup(str(test1[0].rawhtml), "lxml")
+# tweets = BeautifulSoup(str(test1[0].tweets), "lxml")
+# alljson = BeautifulSoup(str(test1[0].alljson), "lxml")
+# location = test1[0].geo
+# print(location)
