@@ -9,4 +9,7 @@ Part of the reason I wanted to do this was also to learn to use some new tech su
 +
 
 ### Credits
-Inital idea to play with the Twitter API came from CS50, an intro CS class at Harvard that I am on staff as a teaching fellow. This year we rolled out a new problem set that did basic sentiment analysis with the twitter API and I thought it was cool so I decided to play with the API to do something else.
+Started out using the twitter API, but quickly realized the limitations on the number of tweets I could query (stops at about 1-2 weeks back),
+so I had to find an alternative. Found code at https://github.com/Jefferson-Henrique/GetOldTweets-python that works around the limitations set
+by twitter so much thanks to Jefferson-Henrique for writing the code for this/putting it up! All credit for GetOldTweets code goes to Jefferson-Henrique
+in the link above.

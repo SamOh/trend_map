@@ -1,20 +1,15 @@
 import os
-
-from twython import Twython
-from twython.exceptions import TwythonAuthError
-
-from settings.py import API_KEY, API_SECRET
+import getoldtweets
 
 """Returns a list of key value pairs (user_location, time_tweeted)"""
 
 
-def get_user_info(hashtag, start_date, end_date):
+def get_user_info(hashtag, start_date, end_date, number_of_tweets):
 
-    # Get tweets
-    # https://github.com/ryanmcgrath/twython/blob/master/twython/endpoints.py
-    try:
-        twitter = Twython(API_KEY, API_SECRET)
-        tweets = twitter.get_user_timeline(screen_name=screen_name, count=count)
-        return [html.unescape(tweet["text"].replace("\n", " ")) for tweet in tweets]
-    except TwythonAuthError:
-        return None
+    # Get tweets based on hashtag
+    # https://github.com/Jefferson-Henrique/GetOldTweets-python
+    tweetCriteria = getoldtweets.got.manager.TweetCriteria().setQuerySearch(hashtag).setSince(
+        start_date).setUntil(end_date).setMaxTweets(number_of_tweets)
+    list_of_tweets = getoldtweets.got.manager.TweetManager.getTweets(tweetCriteria)
+
+    return list_of_tweets
