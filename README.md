@@ -1,4 +1,4 @@
-# trend_locator
+# trend_map
 Application that uses twitter API to show a map of where a trend originated, and how it has spread/progressed over time.
 
 ### Tech used
