@@ -11,5 +11,5 @@ Part of the reason I wanted to do this was also to learn to use some new tech su
 ### Credits
 Started out using the twitter API, but quickly realized the limitations on the number of tweets I could query (stops at about 1-2 weeks back),
 so I had to find an alternative. Found code at https://github.com/Jefferson-Henrique/GetOldTweets-python that works around the limitations set
-by twitter so much thanks to Jefferson-Henrique for writing the code for this/putting it up! All credit for GetOldTweets code goes to Jefferson-Henrique
-in the link above.
+by twitter, however, the code as it was could not extract the lat/long attributes of a tweet
+so I added code to find the geographical location the user was from.
