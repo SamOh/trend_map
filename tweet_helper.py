@@ -16,7 +16,7 @@ def get_user_info(hashtag, start_date, end_date, number_of_tweets=150):
     return list_of_tweets
 
 
-test1 = get_user_info('#feelthebern', '2016-08-01', '2016-08-20', 10)
+test1 = get_user_info('#feelthebern', '2016-08-01', '2016-08-30', 1)
 for tweet in test1:
     print(tweet.text)
     print(tweet.geo)
