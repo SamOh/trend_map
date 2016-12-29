@@ -1,1 +1,38 @@
 {% extends "base.html" %}
+
+{% block body %}
+<form action="{{ url_for('search') }}" class="form-inline" method="post">
+  <fieldset>
+    <div class="form-group">
+      <label class="sr-only" for="hashtag">hashtag</label>
+      <input class="form-control" name="hashtag" placeholder="#trend" type="text"/>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="start_date">start_date</label>
+      <input class="form-control" name="start_date" placeholder="xxxx-xx-xx" type="text"/>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="end_date">end_date</label>
+      <input class="form-control" name="end_date" placeholder="xxxx-xx-xx" type="text"/>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="number_of_tweets">number_of_tweets</label>
+      <input class="form-control" name="number_of_tweets" placeholder="Number of Tweets" type="int"/>
+    </div>
+    <button class="btn btn-default" type="submit">Find Tweets!</button>
+  </fieldset>
+</form>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-warning">
+        {{ message[1] }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+{% endblock %}
+
+
