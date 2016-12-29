@@ -5,22 +5,55 @@ from bs4 import BeautifulSoup
 """Returns a list of key value pairs (user_location, time_tweeted)"""
 
 
-def get_user_info(hashtag, start_date, end_date, number_of_tweets=150):
+def get_user_info_search(hashtag, start_date, end_date, number_of_tweets=150):
 
     # Get tweets based on hashtag
-    # https://github.com/Jefferson-Henrique/GetOldTweets-python
     tweetCriteria = got3.manager.TweetCriteria().setQuerySearch(hashtag).setSince(
         start_date).setUntil(end_date).setMaxTweets(number_of_tweets)
-    list_of_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
+    list_of_tweets = got3.manager.TweetManager().getTweets(tweetCriteria)
 
     return list_of_tweets
 
 
-test1 = get_user_info('#feelthebern', '2016-08-01', '2016-08-30', 1)
-for tweet in test1:
-    print(tweet.text)
-    print(tweet.geo)
+def get_user_info_first(hashtag, number_of_tweets=150):
 
+    tweetCriteria = got3.manager.TweetCriteria().setQuerySearch(hashtag).setMaxTweets(
+        number_of_tweets).setSince('2006-03-21')
+    list_of_tweets = got3.manager.TweetManager().getTweets(tweetCriteria)
+
+    return list_of_tweets
+
+
+def get_user_info_favorites(screen_name, start_date, end_date):
+
+    tweetCriteria = got3.manager.TweetCriteria().setUsername(screen_name).setSince(
+        start_date).setUntil(end_date).setMaxTweets(1)
+    list_of_tweets = got3.manager.TweetManager().getTweets(tweetCriteria)
+
+    return list_of_tweets
+
+
+# test1 = get_user_info_search('#feelthebern', '2016-08-01', '2016-08-30', 10)
+# print(test1)
+# for tweet in test1:
+#     print(tweet.text)
+#     print(tweet.geo)
+#     print(tweet.mentions)
+#     print(tweet.favorites)
+#     print(tweet.formatted_date)
+
+# tweetCriteria = got3.manager.TweetCriteria().setUsername('chicagobull').setMaxTweets(10).setSince(
+#     '2016-12-20').setUntil('2016-12-29')
+# tweet = got3.manager.TweetManager.getTweets(tweetCriteria)
+
+# print(tweet)
+
+# test2 = get_user_info_favorites('chicagobulls', '2016-12-29', '2016-12-29')
+# print(test2)
+# for tweet in test2:
+#     print(tweet.text)
+#     print(tweet.favorites)
+#     print('hello')
 
 # Relic of past tests
 # html = BeautifulSoup(str(test1[0].tweetPQ), "lxml")

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body %}
+<form action="{{ url_for('favorites') }}" class="form-inline" method="post">
+  <fieldset>
+    <div class="form-group">
+      <label class="sr-only" for="screen_name">screen_name</label>
+      <input class="form-control" name="screen_name" placeholder="twitter_handle" type="text"/>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="start_date">start_date</label>
+      <input class="form-control" name="start_date" placeholder="xxxx-xx-xx" type="text"/>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="end_date">end_date</label>
+      <input class="form-control" name="end_date" placeholder="xxxx-xx-xx" type="text"/>
+    </div>
+    <button class="btn btn-default" type="submit">Find average number of favorites!</button>
+  </fieldset>
+</form>
+
+  {% if average %}
+    <p>
+      The average number of favorites per tweet for {{ handle }} is {{ average }}
+    </p>
+  {% endif %}
+{% endblock %}
