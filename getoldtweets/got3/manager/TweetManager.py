@@ -10,7 +10,9 @@ import datetime
 import sys
 import http.cookiejar
 from .. import models
+from bs4 import BeautifulSoup
 from pyquery import PyQuery
+from lxml import etree
 
 
 class TweetManager:
@@ -34,7 +36,12 @@ class TweetManager:
                 break
 
             refreshCursor = json['min_position']
-            tweets = PyQuery(json['items_html'])('div.js-stream-tweet')
+            # print(json['items_html']('div.js-stream-tweet'))
+            json_to_use = (json['items_html']).format('div.js-stream-tweet')
+            tweets = PyQuery(json_to_use)
+            # print(tweets)
+
+            # print(len(tweets))
 
             if len(tweets) == 0:
                 break
@@ -164,7 +171,8 @@ class TweetManager:
             ('Connection', "keep-alive")
         ]
 
-        opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+        opener = urllib.request.build_opener(
+            urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
         opener.addheaders = headers
 
         try:
