@@ -10,7 +10,7 @@ def get_user_info_search(hashtag, start_date, end_date, number_of_tweets=150):
     # Get tweets based on hashtag
     tweetCriteria = got3.manager.TweetCriteria().setQuerySearch(hashtag).setSince(
         start_date).setUntil(end_date).setMaxTweets(number_of_tweets)
-    list_of_tweets = got3.manager.TweetManager().getTweets(tweetCriteria)
+    list_of_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
 
     return list_of_tweets
 
@@ -33,17 +33,16 @@ def get_user_info_favorites(screen_name, start_date, end_date):
     return list_of_tweets
 
 
-# test1 = get_user_info_search('#feelthebern', '2016-08-01', '2016-08-30', 10)
-# print(test1)
-# for tweet in test1:
-#     print(tweet.text)
-#     print(tweet.geo)
-#     print(tweet.mentions)
-#     print(tweet.favorites)
-#     print(tweet.formatted_date)
+test1 = get_user_info_search('#harambe', '2016-07-01', '2016-10-30', 5)
+print(test1)
+for tweet in test1:
+    print(tweet.text)
+    print(tweet.geo)
+    print(tweet.mentions)
+    print(tweet.favorites)
+    print(tweet.formatted_date)
 
-# tweetCriteria = got3.manager.TweetCriteria().setUsername('chicagobull').setMaxTweets(10).setSince(
-#     '2016-12-20').setUntil('2016-12-29')
+# tweetCriteria = got3.manager.TweetCriteria().setUsername('chicagobulls').setMaxTweets(1)
 # tweet = got3.manager.TweetManager.getTweets(tweetCriteria)
 
 # print(tweet)
